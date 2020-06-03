@@ -1,13 +1,21 @@
 #include <SDL2/SDL.h>
 #include "header.h"
 
+/**
+* draw_stuff - draws a line
+* @instance: sdl instance
+*/
 void draw_stuff(SDL_Instance instance)
 {
 	SDL_SetRenderDrawColor(instance.renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderDrawLine(instance.renderer, 10, 10, 100, 100);
 }
 
-int poll_events()
+/**
+* poll_events - getting quit event
+* Return: 1 if quitted, 0 if not.
+*/
+int poll_events(void)
 {
 	SDL_Event event;
 	SDL_KeyboardEvent key;
@@ -29,6 +37,10 @@ int poll_events()
 	return (0);
 }
 
+/**
+* main - main work
+* Return: always 0.
+*/
 int main(void)
 {
 	SDL_Instance instance;

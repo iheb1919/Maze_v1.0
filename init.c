@@ -1,6 +1,11 @@
 #include <SDL2/SDL.h>
 #include "header.h"
 
+/**
+* init_instance - initializing SDL2
+* @instance: new instance
+* Return: 0 if it fails, 1 if it's successful.
+*/
 int init_instance(SDL_Instance *instance)
 {
 	/* Initializing SDL */
