@@ -12,5 +12,5 @@ typedef struct SDL_Instance
 int init_instance(SDL_Instance *);
 int poll_events(void);
 void draw_stuff(SDL_Instance instance);
-
+int * keypress(int x, int y, int s);
 #endif
