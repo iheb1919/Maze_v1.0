@@ -10,7 +10,7 @@ int poll_events(void)
 	SDL_Event event;
 	SDL_KeyboardEvent key;
 
-	while (SDL_PollEvent(&event))
+        while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
 		{
