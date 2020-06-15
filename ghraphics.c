@@ -5,30 +5,21 @@
 * draw_stuff - draws a line
 * @instance: sdl instance
 */
-void draw_stuff(SDL_Instance instance)
+void draw_stuff(SDL_Instance instance, int rect[14][26])
 {
 	SDL_Rect rec;
 	rec.x = 0;
 	rec.y = 0;
 	rec.w = 50;
 	rec.h = 50;
-	int rect[14][26] = {
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-		};
-	SDL_SetRenderDrawColor(instance.renderer, 255,0,0,0);
+	/*int y=100;
+	int x=500;
+	char s=0;
+	 int  *r = keypress(x,y,s);
+	  x = r[0];
+	  y = r[1];
+	  s = r[2];*/
+	SDL_SetRenderDrawColor(instance.renderer, 250,0,0,0);
 	for(int i = 0; i < 14; i++)
 	{
 			for (int j = 0 ; j < 27; j++)
@@ -38,27 +29,12 @@ void draw_stuff(SDL_Instance instance)
 					rec.x += 50;
 				}
 				else
-				{
 					rec.x +=50;
-				}
 			}
 				rec.x =0;
 				rec.y += 50;
 
 	}
-/*	rec.y = 620;
-	rec.x = 0;
-	SDL_RenderFillRect(instance.renderer,&rec);
-	for (int i = 0; i < 10; i++)
-	{
-		SDL_RenderFillRect(instance.renderer,&rec);
-		if (i < 50)
-		{
-			SDL_RenderFillRect(instance.renderer,&rec);
-			rec.x += 1200;
-			//rec.y += 50;
-		}
-		rec.y +=50;
-		}*/
-
+/*	SDL_Rect rect2 = {x,y,50,50};
+	SDL_RenderFillRect(instance.renderer, &rect2);*/
 }
