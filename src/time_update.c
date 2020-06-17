@@ -8,6 +8,7 @@
 void update(int ticksLastFrame)
 {
     float deltaTime;
+    (void) deltaTime;
 
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_TIME_LENGTH));
 
@@ -15,6 +16,6 @@ void update(int ticksLastFrame)
 
     ticksLastFrame = SDL_GetTicks();
 
-    movePlayer(deltaTime);
+    movePlayer();
 }
 

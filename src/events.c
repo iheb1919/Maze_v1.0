@@ -26,7 +26,7 @@ int poll_events(void)
 					p.walkDirection = -1;
 				if (event.key.keysym.sym == SDLK_RIGHT)
 					p.turnDirection = +1;
-				if (event.key.keysym.sym == SDLK_RIGHT)
+				if (event.key.keysym.sym == SDLK_LEFT)
 					p.turnDirection = -1;
 				break;
 			}
@@ -37,7 +37,7 @@ int poll_events(void)
 					p.walkDirection = 0;
 				if (event.key.keysym.sym == SDLK_RIGHT)
 					p.turnDirection = 0;
-				if (event.key.keysym.sym == SDLK_RIGHT)
+				if (event.key.keysym.sym == SDLK_LEFT)
 					p.turnDirection = 0;
 				break;
 			}

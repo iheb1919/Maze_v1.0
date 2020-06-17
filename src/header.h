@@ -3,6 +3,9 @@
 
 #include <SDL2/SDL.h>
 
+#define FALSE 0
+#define TRUE 1
+
 #define PI 3.14159265
 #define TWO_PI 6.28318530
 
@@ -51,6 +54,6 @@ int poll_events(void);
 void renderMap(SDL_Instance instance);
 void setupPlayer(void);
 void renderPlayer(SDL_Instance instance);
-void movePlayer(float deltaTime);
+void movePlayer(void);
 void update(int ticksLastFrame);
 #endif

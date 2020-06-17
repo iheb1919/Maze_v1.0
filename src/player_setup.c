@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include <math.h>
 #include "header.h"
 
 /**
@@ -45,20 +46,44 @@ void renderPlayer(SDL_Instance instance)
 }
 
 /**
+ * mapHasWallAt - detects wall collision
+ * @x: position x
+ * @y: position y
+ * Return: 0 if true, 1 if false
+ */
+int mapHasWallAt(float x, float y)
+{
+    int mapGridIndexX, mapGridIndexY;
+
+    if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) {
+        return (FALSE);
+    }
+    mapGridIndexX = floor(x / TILE_SIZE);
+    mapGridIndexY = floor(y / TILE_SIZE);
+    return (map[mapGridIndexY][mapGridIndexX] != 0);
+}
+
+/**
  * movePlayer - moving player
  * @deltaTime: time
  * Return: nothing
  */
-void movePlayer(float deltaTime)
+void movePlayer(void)
 {
     float moveStep, newPlayerX, newPlayerY;
     (void)newPlayerX;
     (void)newPlayerY;
 
-    p.rotationAngle += p.turnDirection * p.turnSpeed * deltaTime;
+    p.rotationAngle += p.turnDirection * p.turnSpeed / 25;
 
     moveStep = p.walkDirection * p.walkSpeed;
 
-    newPlayerX = p.x + cos(p.rotationAngle) * moveStep;
-    newPlayerY = p.y + sin(p.rotationAngle) * moveStep;
+    newPlayerX = p.x + cos(p.rotationAngle) * moveStep / 25;
+    newPlayerY = p.y + sin(p.rotationAngle) * moveStep / 25;
+
+    if (!mapHasWallAt(newPlayerX, newPlayerY))
+    {
+        p.x = newPlayerX;
+        p.y = newPlayerY;
+    }
 }
