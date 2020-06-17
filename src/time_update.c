@@ -1,0 +1,20 @@
+#include <SDL2/SDL.h>
+#include "header.h"
+
+/**
+ * update - updating
+ * Return: nothing
+ */
+void update(int ticksLastFrame)
+{
+    float deltaTime;
+
+    while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_TIME_LENGTH));
+
+    deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.0f;
+
+    ticksLastFrame = SDL_GetTicks();
+
+    movePlayer(deltaTime);
+}
+
