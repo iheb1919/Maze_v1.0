@@ -27,6 +27,11 @@
 
 extern const int map[MAP_NUM_ROWS][MAP_NUM_COLS];
 
+extern SDL_Window* window;
+extern SDL_Renderer* renderer;
+extern int isGameRunning;
+
+
 typedef struct SDL_Instance
 {
 	SDL_Window *window;
@@ -46,7 +51,7 @@ struct Player
 	float turnSpeed;
 };
 extern struct Player p;
-
+extern int ticksLastFrame;
 struct Ray
 {
 	float rayAngle;
@@ -68,6 +73,6 @@ int poll_events(void);
 void renderMap(SDL_Instance instance);
 void setupPlayer(void);
 void renderPlayer(SDL_Instance instance);
-void movePlayer(void);
-void update(int ticksLastFrame);
+void movePlayer(float deltaTime);
+void update(void);
 #endif

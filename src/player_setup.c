@@ -12,7 +12,7 @@ void setupPlayer(void)
     p.x = WINDOW_WIDTH / 2;
     p.y = WINDOW_HEIGHT / 2;
     p.width = 10;
-    p.height = 30;
+    p.height = 10;
     p.turnDirection = 0;
     p.walkDirection = 0;
     p.rotationAngle = PI / 2;
@@ -68,18 +68,17 @@ int mapHasWallAt(float x, float y)
  * @deltaTime: time
  * Return: nothing
  */
-void movePlayer(void)
+void movePlayer(float deltaTime)
 {
     float moveStep, newPlayerX, newPlayerY;
-    (void)newPlayerX;
-    (void)newPlayerY;
 
-    p.rotationAngle += p.turnDirection * p.turnSpeed / 25;
+    //deltaTime = 0.0010;
+    p.rotationAngle += p.turnDirection * p.turnSpeed * deltaTime;
 
-    moveStep = p.walkDirection * p.walkSpeed;
+    moveStep = p.walkDirection * p.walkSpeed * deltaTime;
 
-    newPlayerX = p.x + cos(p.rotationAngle) * moveStep / 25;
-    newPlayerY = p.y + sin(p.rotationAngle) * moveStep / 25;
+    newPlayerX = p.x + cos(p.rotationAngle) * moveStep;
+    newPlayerY = p.y + sin(p.rotationAngle) * moveStep;
 
     if (!mapHasWallAt(newPlayerX, newPlayerY))
     {

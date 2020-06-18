@@ -19,7 +19,6 @@ const int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 };
 
 struct Player p;
-
 int ticksLastFrame;
 
 /**
@@ -40,7 +39,7 @@ int main(void)
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
 			break;
-		update(ticksLastFrame);
+		update();
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 255);
 		SDL_RenderClear(instance.renderer);
 
