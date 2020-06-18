@@ -19,7 +19,7 @@ void draw_stuff(SDL_Instance instance, int rect[14][26])
 	  x = r[0];
 	  y = r[1];
 	  s = r[2];*/
-	SDL_SetRenderDrawColor(instance.renderer, 250,0,0,0);
+	SDL_SetRenderDrawColor(instance.renderer, 250,100,50,0);
 	for(int i = 0; i < 14; i++)
 	{
 			for (int j = 0 ; j < 27; j++)
@@ -29,7 +29,10 @@ void draw_stuff(SDL_Instance instance, int rect[14][26])
 					rec.x += 50;
 				}
 				else
+				{
+					SDL_RenderDrawRect(instance.renderer, &rec);
 					rec.x +=50;
+				}
 			}
 				rec.x =0;
 				rec.y += 50;

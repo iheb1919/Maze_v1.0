@@ -50,25 +50,25 @@ int * keypress(int x, int y, int s, int rect[14][26])
             {
             case SDLK_UP:
 		    // int a = ;
-		    if (rect[x/50][(y-50)/50] != 0)
+		    if (rect[(y-50)/50][x/50] != 0)
 		    {y = y-50;}
 		    printf("%d  %d\n",x,y);
 		    printf("i = %d || j= %d  %d\n",x/50 , (y-50)/50, rect[x/50][(y-50)/50]);
               break;
             case SDLK_DOWN:
-		     if (rect[x/50][(y+50)/50] != 0)
+		    if (rect[(y+50)/50][x/50] != 0)
 		     {y = y+50;}
 		    printf("%d  %d\n",x,y);
 		     printf("i = %d || j= %d  %d\n",x/50 , (y+50)/50,rect[x/50][(y+50)/50]);
               break;
             case SDLK_LEFT:
-		    if (rect[(x-50)/50][y/50] != 0)
+		    if (rect[y/50][(x-50)/50] != 0)
 		    {x = x-50;}
 		    printf("i = %d || j= %d  %d\n",(x-50)/50 , y/50,rect[(x-50)/50][y/50]);
 		     printf("%d  %d\n",x,y);
               break;
             case SDLK_RIGHT:
-		    if (rect[(x+50)/50][y/50] != 0)
+		    if (rect[y/50][(x+50)/50] != 0)
 		    {x = x+50;}
 		     printf("%d  %d\n",x,y);
 		    printf("i = %d || j= %d  %d\n",(x+50)/50 , y/50,rect[(x+50)/50][y/50]);
