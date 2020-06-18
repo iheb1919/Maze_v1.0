@@ -11,8 +11,8 @@ void setupPlayer(void)
 {
     p.x = WINDOW_WIDTH / 2;
     p.y = WINDOW_HEIGHT / 2;
-    p.width = 1;
-    p.height = 1;
+    p.width = 10;
+    p.height = 30;
     p.turnDirection = 0;
     p.walkDirection = 0;
     p.rotationAngle = PI / 2;

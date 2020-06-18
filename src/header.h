@@ -45,8 +45,22 @@ struct Player
 	float walkSpeed;
 	float turnSpeed;
 };
-
 extern struct Player p;
+
+struct Ray
+{
+	float rayAngle;
+	float wallHitX;
+	float wallHitY;
+	float distance;
+	int wasHitVertical;
+	int isRayFacingUp;
+	int isRayFacingDown;
+	int isRayFacingLeft;
+	int isRayFacingRight;
+	int wallHitContent;
+};
+extern struct Ray rays[NUM_RAYS];
 
 /* Functions */
 int init_instance(SDL_Instance *);
