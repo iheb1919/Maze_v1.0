@@ -7,7 +7,7 @@
  * playerCharacter - sets characteristics of player
  * Return: Nothing
  */
-void setupPlayer(void)
+void setupPlayer(SDL_Instance instance)
 {
     p.x = WINDOW_WIDTH / 2;
     p.y = WINDOW_HEIGHT / 2;
@@ -18,6 +18,16 @@ void setupPlayer(void)
     p.rotationAngle = PI / 2;
     p.walkSpeed = 100;
     p.turnSpeed = 45 * (PI / 180);
+    /* Allocating the total amount of bytes in memory to hold the colorbuffer */
+    colorBuffer = (Uint32*) malloc(sizeof(Uint32) * (Uint32)WINDOW_WIDTH * (Uint32)WINDOW_HEIGHT);
+    /* Creating an SDL_Texture to display the colorbuffer */
+    colorBufferTexture = SDL_CreateTexture(
+        instance.renderer,
+        SDL_PIXELFORMAT_ARGB8888,
+        SDL_TEXTUREACCESS_STREAMING,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT
+    );
 }
 
 /**

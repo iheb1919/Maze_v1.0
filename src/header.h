@@ -13,7 +13,7 @@
 #define MAP_NUM_ROWS 13
 #define MAP_NUM_COLS 20
 
-#define MINIMAP_SCALE_FACTOR 1.0
+#define MINIMAP_SCALE_FACTOR 0.17
 
 #define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
 #define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
@@ -51,28 +51,42 @@ struct Player
 	float turnSpeed;
 };
 extern struct Player p;
-extern int ticksLastFrame;
-struct Ray
-{
-	float rayAngle;
-	float wallHitX;
-	float wallHitY;
-	float distance;
-	int wasHitVertical;
-	int isRayFacingUp;
-	int isRayFacingDown;
-	int isRayFacingLeft;
-	int isRayFacingRight;
-	int wallHitContent;
-};
+
+struct Ray {
+    float rayAngle;
+    float wallHitX;
+    float wallHitY;
+    float distance;
+    int wasHitVertical;
+    int isRayFacingUp;
+    int isRayFacingDown;
+    int isRayFacingLeft;
+    int isRayFacingRight;
+    int wallHitContent;
+} rays[NUM_RAYS];
+
 extern struct Ray rays[NUM_RAYS];
+extern int ticksLastFrame;
+extern Uint32 *colorBuffer;
+extern SDL_Texture *colorBufferTexture;
 
 /* Functions */
+void render(SDL_Instance instance);
+void close(SDL_Instance instance);
 int init_instance(SDL_Instance *);
 int poll_events(void);
 void renderMap(SDL_Instance instance);
-void setupPlayer(void);
+void setupPlayer(SDL_Instance instance);
 void renderPlayer(SDL_Instance instance);
 void movePlayer(float deltaTime);
+int mapHasWallAt(float x, float y);
 void update(void);
+void castAllRays(void);
+void castRay(float rayAngle, int strIpld);
+float normalizeAngle(float angle);
+float distanceBetweenPoints(float x1, float y1, float x2, float y2);
+void renderRays(SDL_Instance instance);
+void clearColorBuffer(Uint32 color);
+void renderColorBuffer(SDL_Instance instance);
+void generate3DProjection(void);
 #endif
