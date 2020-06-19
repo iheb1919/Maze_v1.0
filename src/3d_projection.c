@@ -32,7 +32,7 @@ void generate3DProjection(void)
 
         /* Ceiling */
         for (y = 0; y < wallTopPixel; y++)
-            colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF333333;
+            colorBuffer[(WINDOW_WIDTH * y) + i] = 0x000000;
 
         /* calculate texture offset X */
         if (rays[i].wasHitVertical)
@@ -54,7 +54,7 @@ void generate3DProjection(void)
 
         /* set the color of the floor */
         for (y = wallBottomPixel; y < WINDOW_HEIGHT; y++)
-            colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF777777;
+            colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFFC5AAAA;
 
         /* This For Having No Sky and Replacing It With Taller Walls */
         /*for (y = 0; y < wallTopPixel; y++)

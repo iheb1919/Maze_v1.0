@@ -8,8 +8,8 @@
 #define TWO_PI 6.28318530
 
 #define TILE_SIZE 64
-#define MAP_NUM_ROWS 13
-#define MAP_NUM_COLS 20
+#define MAP_NUM_ROWS 19
+#define MAP_NUM_COLS 19
 #define NUM_TEXTURES 8
 
 #define MINIMAP_SCALE_FACTOR 0.17
