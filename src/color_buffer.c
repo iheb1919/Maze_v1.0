@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
-#include "header.h"
+#include "../inc/header.h"
+#include "../inc/constants.h"
 
 /**
  * clearColorBuffer - clears the color buffer

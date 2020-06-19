@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "header.h"
+#include "../inc/header.h"
 
 /**
 * poll_events - getting quit event

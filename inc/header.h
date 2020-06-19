@@ -1,29 +1,9 @@
-#ifndef _DEMO_H_
-#define _DEMO_H_
+#ifndef _HEADER_
+#define _HEADER_
 
 #include <SDL2/SDL.h>
-
-#define FALSE 0
-#define TRUE 1
-
-#define PI 3.14159265
-#define TWO_PI 6.28318530
-
-#define TILE_SIZE 64
-#define MAP_NUM_ROWS 13
-#define MAP_NUM_COLS 20
-
-#define MINIMAP_SCALE_FACTOR 0.17
-
-#define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
-#define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
-
-#define FOV_ANGLE (60 * (PI / 180))
-
-#define NUM_RAYS WINDOW_WIDTH
-
-#define FPS 30
-#define FRAME_TIME_LENGTH (1000 / FPS)
+#include "../inc/upng.h"
+#include "../inc/constants.h"
 
 extern const int map[MAP_NUM_ROWS][MAP_NUM_COLS];
 
@@ -67,8 +47,10 @@ struct Ray {
 
 extern struct Ray rays[NUM_RAYS];
 extern int ticksLastFrame;
-extern Uint32 *colorBuffer;
+extern uint32_t *colorBuffer;
 extern SDL_Texture *colorBufferTexture;
+extern uint32_t *wallTexture;
+extern upng_t *pngTexture;
 
 /* Functions */
 void render(SDL_Instance instance);
@@ -89,4 +71,5 @@ void renderRays(SDL_Instance instance);
 void clearColorBuffer(Uint32 color);
 void renderColorBuffer(SDL_Instance instance);
 void generate3DProjection(void);
-#endif
+
+#endif /* _HEADER_ */

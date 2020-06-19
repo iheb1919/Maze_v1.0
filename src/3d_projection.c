@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
-#include "header.h"
+#include "../inc/header.h"
+#include "../inc/constants.h"
 
 /**
  * generate3DProjection - creating 3d projection
@@ -10,6 +11,10 @@ void generate3DProjection(void)
     int i, y;
     float perpDistance, distanceProjPlane, projectedWallHeight;
     int wallStripHeight, wallTopPixel, wallBottomPixel;
+    int textureOffsetX;
+    int distanceFromTop, textureOffsetY;
+    Uint32 texelColor;
+    (void)texelColor;
 
     for (i = 0; i < NUM_RAYS; i++)
     {
@@ -25,13 +30,29 @@ void generate3DProjection(void)
         wallBottomPixel = (WINDOW_HEIGHT / 2) + (wallStripHeight / 2);
         wallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
 
-        /* render the wall from wallTopPixel to wallBottomPixel */
+        /* Ceiling */
         for (y = 0; y < wallTopPixel; y++)
             colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF333333;
 
-        for (y = wallTopPixel; y < wallBottomPixel; y++)
-            colorBuffer[(WINDOW_WIDTH * y) + i] = rays[i].wasHitVertical ? 0xFFFFFFFF : 0xFFCCCCCC;
+        /* calculate texture offset X */
+        if (rays[i].wasHitVertical)
+            textureOffsetX = (int)rays[i].wallHitY % TEXTURE_HEIGHT;
+        else
+            textureOffsetX = (int)rays[i].wallHitX % TEXTURE_WIDTH;
 
+        /* render the wall from wallTopPixel to wallBottomPixel */
+        for (y = wallTopPixel; y < wallBottomPixel; y++)
+        {
+            /* calculate texture offset Y */
+            distanceFromTop = y + (wallStripHeight / 2) - (WINDOW_HEIGHT / 2);
+            textureOffsetY = distanceFromTop * ((float)TEXTURE_HEIGHT / wallStripHeight);
+
+            /* set the color of the wall based on the color from the texture */
+            Uint32 texelColor = wallTexture[(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
+            colorBuffer[(WINDOW_WIDTH * y) + i] = texelColor;
+        }
+
+        /* set the color of the floor */
         for (y = wallBottomPixel; y < WINDOW_HEIGHT; y++)
             colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF777777;
 

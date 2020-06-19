@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "header.h"
+#include "../inc/header.h"
 
 /**
 * init_instance - initializing SDL2

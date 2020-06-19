@@ -1,7 +1,9 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include <math.h>
-#include "header.h"
+#include "../inc/header.h"
+#include "../inc/constants.h"
+#include "../inc/textures.h"
 
 /**
  * playerCharacter - sets characteristics of player
@@ -23,11 +25,22 @@ void setupPlayer(SDL_Instance instance)
     /* Creating an SDL_Texture to display the colorbuffer */
     colorBufferTexture = SDL_CreateTexture(
         instance.renderer,
-        SDL_PIXELFORMAT_ARGB8888,
+        SDL_PIXELFORMAT_RGBA32,
         SDL_TEXTUREACCESS_STREAMING,
         WINDOW_WIDTH,
         WINDOW_HEIGHT
     );
+
+    /* allocating the total amount of bytes in memory to hold our wall texture */
+    wallTexture = (uint32_t *) malloc(sizeof(uint32_t) * (uint32_t)TEXTURE_WIDTH * (uint32_t)TEXTURE_HEIGHT);
+
+    /* loading an external texture using the upng library to decode the file */
+    pngTexture = upng_new_from_file(PIKUMA_TEXTURE_FILEPATH);
+    if (pngTexture != NULL) {
+        upng_decode(pngTexture);
+        if (upng_get_error(pngTexture) == UPNG_EOK)
+            wallTexture = (uint32_t *) upng_get_buffer(pngTexture);
+    }
 }
 
 /**

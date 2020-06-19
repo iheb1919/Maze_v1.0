@@ -1,7 +1,8 @@
 #include <SDL2/SDL.h>
 #include <math.h>
 #include <limits.h>
-#include "header.h"
+#include "../inc/header.h"
+#include "../inc/constants.h"
 
 /**
  * normalizeAngle - normalizing the angle
