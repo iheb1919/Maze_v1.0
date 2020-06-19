@@ -25,22 +25,21 @@ void setupPlayer(SDL_Instance instance)
     /* Creating an SDL_Texture to display the colorbuffer */
     colorBufferTexture = SDL_CreateTexture(
         instance.renderer,
-        SDL_PIXELFORMAT_RGBA32,
+        SDL_PIXELFORMAT_ARGB8888,
         SDL_TEXTUREACCESS_STREAMING,
         WINDOW_WIDTH,
         WINDOW_HEIGHT
     );
 
-    /* allocating the total amount of bytes in memory to hold our wall texture */
-    wallTexture = (uint32_t *) malloc(sizeof(uint32_t) * (uint32_t)TEXTURE_WIDTH * (uint32_t)TEXTURE_HEIGHT);
-
-    /* loading an external texture using the upng library to decode the file */
-    pngTexture = upng_new_from_file(PIKUMA_TEXTURE_FILEPATH);
-    if (pngTexture != NULL) {
-        upng_decode(pngTexture);
-        if (upng_get_error(pngTexture) == UPNG_EOK)
-            wallTexture = (uint32_t *) upng_get_buffer(pngTexture);
-    }
+    /* loading textures from the textures.h */
+    textures[0] = (Uint32 *) REDBRICK_TEXTURE;
+    textures[1] = (Uint32 *) PURPLESTONE_TEXTURE;
+    textures[2] = (Uint32 *) MOSSYSTONE_TEXTURE;
+    textures[3] = (Uint32 *) GRAYSTONE_TEXTURE;
+    textures[4] = (Uint32 *) COLORSTONE_TEXTURE;
+    textures[5] = (Uint32 *) BLUESTONE_TEXTURE;
+    textures[6] = (Uint32 *) WOOD_TEXTURE;
+    textures[7] = (Uint32 *) EAGLE_TEXTURE;
 }
 
 /**
@@ -96,7 +95,7 @@ void movePlayer(float deltaTime)
     float moveStep, newPlayerX, newPlayerY;
 
     //deltaTime = 0.0010;
-    p.rotationAngle += p.turnDirection * p.turnSpeed * deltaTime;
+    p.rotationAngle += p.turnDirection * p.turnSpeed * 1.10 * deltaTime;
 
     moveStep = p.walkDirection * p.walkSpeed * deltaTime;
 

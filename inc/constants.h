@@ -27,14 +27,4 @@
 #define FPS 30
 #define FRAME_TIME_LENGTH (1000 / FPS)
 
-#define REDBRICK_TEXTURE_FILEPATH "./img/redbrick.png"
-#define PURPLESTONE_TEXTURE_FILEPATH "./img/purplestone.png"
-#define MOSSYSTONE_TEXTURE_FILEPATH "./img/mossystone.png"
-#define GRAYSTONE_TEXTURE_FILEPATH "./img/graystone.png"
-#define COLORSTONE_TEXTURE_FILEPATH "./img/colorstone.png"
-#define BLUESTONE_TEXTURE_FILEPATH "./img/bluestone.png"
-#define WOOD_TEXTURE_FILEPATH "./img/wood.png"
-#define EAGLE_TEXTURE_FILEPATH "./img/eagle.png"
-#define PIKUMA_TEXTURE_FILEPATH "./img/pikuma.png"
-
 #endif /* _GLOBAL_ */

@@ -20,6 +20,14 @@ int poll_events(void)
 				if (event.key.keysym.sym == SDLK_ESCAPE)
 					return (1);
 
+				if (event.key.keysym.sym == SDLK_w)
+					p.walkDirection = +1;
+				if (event.key.keysym.sym == SDLK_s)
+					p.walkDirection = -1;
+				if (event.key.keysym.sym == SDLK_d)
+					p.turnDirection = +1;
+				if (event.key.keysym.sym == SDLK_a)
+					p.turnDirection = -1;
 				if (event.key.keysym.sym == SDLK_UP)
 					p.walkDirection = +1;
 				if (event.key.keysym.sym == SDLK_DOWN)
@@ -31,6 +39,14 @@ int poll_events(void)
 				break;
 			}
 			case SDL_KEYUP: {
+				if (event.key.keysym.sym == SDLK_w)
+					p.walkDirection = 0;
+				if (event.key.keysym.sym == SDLK_s)
+					p.walkDirection = 0;
+				if (event.key.keysym.sym == SDLK_d)
+					p.turnDirection = 0;
+				if (event.key.keysym.sym == SDLK_a)
+					p.turnDirection = 0;
 				if (event.key.keysym.sym == SDLK_UP)
 					p.walkDirection = 0;
 				if (event.key.keysym.sym == SDLK_DOWN)

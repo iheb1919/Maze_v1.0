@@ -15,6 +15,7 @@ void generate3DProjection(void)
     int distanceFromTop, textureOffsetY;
     Uint32 texelColor;
     (void)texelColor;
+    int texNum;
 
     for (i = 0; i < NUM_RAYS; i++)
     {
@@ -32,7 +33,7 @@ void generate3DProjection(void)
 
         /* Ceiling */
         for (y = 0; y < wallTopPixel; y++)
-            colorBuffer[(WINDOW_WIDTH * y) + i] = 0x000000;
+            colorBuffer[(WINDOW_WIDTH * y) + i] = 0x190B33;
 
         /* calculate texture offset X */
         if (rays[i].wasHitVertical)
@@ -40,21 +41,24 @@ void generate3DProjection(void)
         else
             textureOffsetX = (int)rays[i].wallHitX % TEXTURE_WIDTH;
 
-        /* render the wall from wallTopPixel to wallBottomPixel */
+        /* getting the correct texture id number from the map */
+        texNum = rays[i].wallHitContent - 1;
+
+        /* rendering the wall from wallTopPixel to wallBottomPixel */
         for (y = wallTopPixel; y < wallBottomPixel; y++)
         {
-            /* calculate texture offset Y */
+            /* calculating texture offset Y */
             distanceFromTop = y + (wallStripHeight / 2) - (WINDOW_HEIGHT / 2);
             textureOffsetY = distanceFromTop * ((float)TEXTURE_HEIGHT / wallStripHeight);
 
-            /* set the color of the wall based on the color from the texture */
-            Uint32 texelColor = wallTexture[(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
+            /* seting the color of the wall based on the color from the texture */
+            Uint32 texelColor = textures[texNum][(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
             colorBuffer[(WINDOW_WIDTH * y) + i] = texelColor;
         }
 
         /* set the color of the floor */
         for (y = wallBottomPixel; y < WINDOW_HEIGHT; y++)
-            colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFFC5AAAA;
+            colorBuffer[(WINDOW_WIDTH * y) + i] = 0xC1C1C1;
 
         /* This For Having No Sky and Replacing It With Taller Walls */
         /*for (y = 0; y < wallTopPixel; y++)

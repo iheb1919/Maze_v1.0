@@ -2,7 +2,6 @@
 #define _HEADER_
 
 #include <SDL2/SDL.h>
-#include "../inc/upng.h"
 #include "../inc/constants.h"
 
 extern const int map[MAP_NUM_ROWS][MAP_NUM_COLS];
@@ -47,10 +46,10 @@ struct Ray {
 
 extern struct Ray rays[NUM_RAYS];
 extern int ticksLastFrame;
-extern uint32_t *colorBuffer;
+extern Uint32 *colorBuffer;
 extern SDL_Texture *colorBufferTexture;
-extern uint32_t *wallTexture;
-extern upng_t *pngTexture;
+extern Uint32 *wallTexture;
+extern Uint32 *textures[NUM_TEXTURES];
 
 /* Functions */
 void render(SDL_Instance instance);
