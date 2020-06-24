@@ -10,6 +10,6 @@ Article will be linked here.
 # Compilation
 * Run ```make``` to compile with ```gcc -Wall -Werror -Wextra -pedantic *.c -o maze `sdl2-config --cflags` `sdl2-config --libs` ```.
 # Authors
-Aziz Ayed - [Twitter](https://twitter.com/SpacyFranky)/[Linkedin](https://www.linkedin.com/in/aziz-ayed-20a462192/)    
-Farouk Ben Ajimi - [Twitter](https://twitter.com/ajimi_ben)/[Linkedin]()                                               
-Iheb Mejri - [Twitter]()/[Linkedin]()
+Aziz Ayed - [Twitter](https://twitter.com/SpacyFranky) / [Linkedin](https://www.linkedin.com/in/aziz-ayed-20a462192/)    
+Farouk Ben Ajimi - [Twitter](https://twitter.com/ajimi_ben) / [Linkedin]()                                               
+Iheb Mejri - [Twitter]() / [Linkedin]()
