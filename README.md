@@ -1,6 +1,4 @@
 # Maze!
-[1_4I9gaLhYMUxBnRSlCQrYqg](https://user-images.githubusercontent.com/48572341/134558420-b54bb6d9-0011-4854-87d3-85a25be3b064.png)
-
 
 # Introduction
 Article will be linked here.
